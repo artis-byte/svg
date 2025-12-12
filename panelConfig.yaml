@@ -1,7 +1,12 @@
 ---
+# Flow Panel Config for your draw.io SVG (data-cell-id based)
+# IMPORTANT: These IDs match your SVG:
+# - txt_*_export / txt_*_import (NOT *_total)
+# - edge_* and lab_* as in your diagram
+
 cellIdPreamble: ""
 
-# Reusable animation profile (copied from the plugin's example structure)
+# Reusable animation profile
 flowAnim: &flowAnim
   thresholdOffValue: 1
   thresholdLwrValue: 50
@@ -11,76 +16,187 @@ flowAnim: &flowAnim
 
 cells:
   # ======================
-  # Country totals (texts)
+  # Country totals (texts inside boxes)
+  # Your Flux must output series with _field exactly:
+  # txt_NL_export, txt_NL_import, txt_BE_export, txt_BE_import, ...
   # ======================
-  txt_NL_export_total: { dataRef: "txt_NL_export_total", label: { separator: "cr" }, units: "none", unitsPostfix: " MW" }
-  txt_NL_import_total: { dataRef: "txt_NL_import_total", label: { separator: "cr" }, units: "none", unitsPostfix: " MW" }
+  txt_NL_export:
+    dataRef: "txt_NL_export"
+    label: { separator: "none" }
+    units: "none"
+    unitsPostfix: " MW"
+  txt_NL_import:
+    dataRef: "txt_NL_import"
+    label: { separator: "none" }
+    units: "none"
+    unitsPostfix: " MW"
 
-  txt_BE_export_total: { dataRef: "txt_BE_export_total", label: { separator: "cr" }, units: "none", unitsPostfix: " MW" }
-  txt_BE_import_total: { dataRef: "txt_BE_import_total", label: { separator: "cr" }, units: "none", unitsPostfix: " MW" }
+  txt_BE_export:
+    dataRef: "txt_BE_export"
+    label: { separator: "none" }
+    units: "none"
+    unitsPostfix: " MW"
+  txt_BE_import:
+    dataRef: "txt_BE_import"
+    label: { separator: "none" }
+    units: "none"
+    unitsPostfix: " MW"
 
-  txt_DE_export_total: { dataRef: "txt_DE_export_total", label: { separator: "cr" }, units: "none", unitsPostfix: " MW" }
-  txt_DE_import_total: { dataRef: "txt_DE_import_total", label: { separator: "cr" }, units: "none", unitsPostfix: " MW" }
+  txt_DE_export:
+    dataRef: "txt_DE_export"
+    label: { separator: "none" }
+    units: "none"
+    unitsPostfix: " MW"
+  txt_DE_import:
+    dataRef: "txt_DE_import"
+    label: { separator: "none" }
+    units: "none"
+    unitsPostfix: " MW"
 
-  txt_DK_export_total: { dataRef: "txt_DK_export_total", label: { separator: "cr" }, units: "none", unitsPostfix: " MW" }
-  txt_DK_import_total: { dataRef: "txt_DK_import_total", label: { separator: "cr" }, units: "none", unitsPostfix: " MW" }
+  txt_DK_export:
+    dataRef: "txt_DK_export"
+    label: { separator: "none" }
+    units: "none"
+    unitsPostfix: " MW"
+  txt_DK_import:
+    dataRef: "txt_DK_import"
+    label: { separator: "none" }
+    units: "none"
+    unitsPostfix: " MW"
 
-  txt_FR_export_total: { dataRef: "txt_FR_export_total", label: { separator: "cr" }, units: "none", unitsPostfix: " MW" }
-  txt_FR_import_total: { dataRef: "txt_FR_import_total", label: { separator: "cr" }, units: "none", unitsPostfix: " MW" }
+  txt_FR_export:
+    dataRef: "txt_FR_export"
+    label: { separator: "none" }
+    units: "none"
+    unitsPostfix: " MW"
+  txt_FR_import:
+    dataRef: "txt_FR_import"
+    label: { separator: "none" }
+    units: "none"
+    unitsPostfix: " MW"
 
   # ======================
-  # NL <-> BE (2 arrows)
+  # NL <-> BE (2 arrows + 2 labels)
+  # Flux series needed: edge_NL_BE_AB, edge_NL_BE_BA
   # ======================
   edge_NL_BE_AB: { dataRef: "edge_NL_BE_AB", flowAnimation: *flowAnim }
   edge_NL_BE_BA: { dataRef: "edge_NL_BE_BA", flowAnimation: *flowAnim }
 
-  lab_NL_BE_AB: { dataRef: "edge_NL_BE_AB", label: { separator: "cr" }, units: "none", unitsPostfix: " MW" }
-  lab_NL_BE_BA: { dataRef: "edge_NL_BE_BA", label: { separator: "cr" }, units: "none", unitsPostfix: " MW" }
+  lab_NL_BE_AB:
+    dataRef: "edge_NL_BE_AB"
+    label: { separator: "none" }
+    units: "none"
+    unitsPostfix: " MW"
+  lab_NL_BE_BA:
+    dataRef: "edge_NL_BE_BA"
+    label: { separator: "none" }
+    units: "none"
+    unitsPostfix: " MW"
 
   # ======================
-  # BE <-> DE (2 arrows)
+  # BE <-> DE
+  # Flux series: edge_BE_DE_AB, edge_BE_DE_BA
   # ======================
   edge_BE_DE_AB: { dataRef: "edge_BE_DE_AB", flowAnimation: *flowAnim }
   edge_BE_DE_BA: { dataRef: "edge_BE_DE_BA", flowAnimation: *flowAnim }
 
-  lab_BE_DE_AB: { dataRef: "edge_BE_DE_AB", label: { separator: "cr" }, units: "none", unitsPostfix: " MW" }
-  lab_BE_DE_BA: { dataRef: "edge_BE_DE_BA", label: { separator: "cr" }, units: "none", unitsPostfix: " MW" }
+  lab_BE_DE_AB:
+    dataRef: "edge_BE_DE_AB"
+    label: { separator: "none" }
+    units: "none"
+    unitsPostfix: " MW"
+  lab_BE_DE_BA:
+    dataRef: "edge_BE_DE_BA"
+    label: { separator: "none" }
+    units: "none"
+    unitsPostfix: " MW"
 
   # ======================
-  # BE <-> FR (2 arrows)
+  # BE <-> FR
+  # Flux series: edge_BE_FR_AB, edge_BE_FR_BA
   # ======================
   edge_BE_FR_AB: { dataRef: "edge_BE_FR_AB", flowAnimation: *flowAnim }
   edge_BE_FR_BA: { dataRef: "edge_BE_FR_BA", flowAnimation: *flowAnim }
 
-  lab_BE_FR_AB: { dataRef: "edge_BE_FR_AB", label: { separator: "cr" }, units: "none", unitsPostfix: " MW" }
-  lab_BE_FR_BA: { dataRef: "edge_BE_FR_BA", label: { separator: "cr" }, units: "none", unitsPostfix: " MW" }
+  lab_BE_FR_AB:
+    dataRef: "edge_BE_FR_AB"
+    label: { separator: "none" }
+    units: "none"
+    unitsPostfix: " MW"
+  lab_BE_FR_BA:
+    dataRef: "edge_BE_FR_BA"
+    label: { separator: "none" }
+    units: "none"
+    unitsPostfix: " MW"
 
   # ======================
-  # NL <-> DE (2 arrows)
+  # NL <-> DE
+  # Flux series: edge_NL_DE_AB, edge_NL_DE_BA
   # ======================
   edge_NL_DE_AB: { dataRef: "edge_NL_DE_AB", flowAnimation: *flowAnim }
   edge_NL_DE_BA: { dataRef: "edge_NL_DE_BA", flowAnimation: *flowAnim }
 
-  lab_NL_DE_AB: { dataRef: "edge_NL_DE_AB", label: { separator: "cr" }, units: "none", unitsPostfix: " MW" }
-  lab_NL_DE_BA: { dataRef: "edge_NL_DE_BA", label: { separator: "cr" }, units: "none", unitsPostfix: " MW" }
+  lab_NL_DE_AB:
+    dataRef: "edge_NL_DE_AB"
+    label: { separator: "none" }
+    units: "none"
+    unitsPostfix: " MW"
+  lab_NL_DE_BA:
+    dataRef: "edge_NL_DE_BA"
+    label: { separator: "none" }
+    units: "none"
+    unitsPostfix: " MW"
 
   # ======================
-  # NL <-> DK (2 arrows)
+  # NL <-> DK
+  # Flux series: edge_NL_DK_AB, edge_NL_DK_BA
   # ======================
   edge_NL_DK_AB: { dataRef: "edge_NL_DK_AB", flowAnimation: *flowAnim }
   edge_NL_DK_BA: { dataRef: "edge_NL_DK_BA", flowAnimation: *flowAnim }
 
-  lab_NL_DK_AB: { dataRef: "edge_NL_DK_AB", label: { separator: "cr" }, units: "none", unitsPostfix: " MW" }
-  lab_NL_DK_BA: { dataRef: "edge_NL_DK_BA", label: { separator: "cr" }, units: "none", unitsPostfix: " MW" }
+  lab_NL_DK_AB:
+    dataRef: "edge_NL_DK_AB"
+    label: { separator: "none" }
+    units: "none"
+    unitsPostfix: " MW"
+  lab_NL_DK_BA:
+    dataRef: "edge_NL_DK_BA"
+    label: { separator: "none" }
+    units: "none"
+    unitsPostfix: " MW"
 
   # ======================
-  # DK <-> DE (2 arrows)
+  # DK <-> DE
+  # Flux series: edge_DK_DE_AB, edge_DK_DE_BA
   # ======================
   edge_DK_DE_AB: { dataRef: "edge_DK_DE_AB", flowAnimation: *flowAnim }
   edge_DK_DE_BA: { dataRef: "edge_DK_DE_BA", flowAnimation: *flowAnim }
 
-  lab_DK_DE_AB: { dataRef: "edge_DK_DE_AB", label: { separator: "cr" }, units: "none", unitsPostfix: " MW" }
-  lab_DK_DE_BA: { dataRef: "edge_DK_DE_BA", label: { separator: "cr" }, units: "none", unitsPostfix: " MW" }
+  lab_DK_DE_AB:
+    dataRef: "edge_DK_DE_AB"
+    label: { separator: "none" }
+    units: "none"
+    unitsPostfix: " MW"
+  lab_DK_DE_BA:
+    dataRef: "edge_DK_DE_BA"
+    label: { separator: "none" }
+    units: "none"
+    unitsPostfix: " MW"
 
-  # FR <-> DE: your SVG currently only had edge_FR_DE_AB (no lab + no BA)
+  # ======================
+  # FR <-> DE
+  # NOTE: Your current SVG only has edge_FR_DE_AB (no BA + no labels for this border).
+  # If you add lab_FR_DE_AB / edge_FR_DE_BA / lab_FR_DE_BA to the SVG, uncomment/add here.
+  # ======================
   edge_FR_DE_AB: { dataRef: "edge_FR_DE_AB", flowAnimation: *flowAnim }
+  # lab_FR_DE_AB:
+  #   dataRef: "edge_FR_DE_AB"
+  #   label: { separator: "none" }
+  #   units: "none"
+  #   unitsPostfix: " MW"
+  # edge_FR_DE_BA: { dataRef: "edge_FR_DE_BA", flowAnimation: *flowAnim }
+  # lab_FR_DE_BA:
+  #   dataRef: "edge_FR_DE_BA"
+  #   label: { separator: "none" }
+  #   units: "none"
+  #   unitsPostfix: " MW"
